@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'CNH Marketplace - Encontre seu Instrutor',
@@ -27,16 +28,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gap: '1rem',
           }}
         >
-          <a href="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.25rem' }}>
+          <Link href="/" style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.25rem' }}>
             🚗 CNH Marketplace
-          </a>
+          </Link>
           <nav style={{ marginLeft: 'auto', display: 'flex', gap: '1rem' }}>
-            <a href="/" style={{ color: 'white', textDecoration: 'none' }}>
+            <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>
               Início
-            </a>
-            <a href="/instrutores" style={{ color: 'white', textDecoration: 'none' }}>
+            </Link>
+            <Link href="/instrutores" style={{ color: 'white', textDecoration: 'none' }}>
               Instrutores
-            </a>
+            </Link>
           </nav>
         </header>
         <main>{children}</main>

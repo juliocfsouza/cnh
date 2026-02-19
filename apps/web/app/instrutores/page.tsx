@@ -36,9 +36,10 @@ async function getInstructors(cursor?: string): Promise<ApiResponse> {
 export default async function InstructoresPage({
   searchParams,
 }: {
-  searchParams: { cursor?: string };
+  searchParams: Promise<{ cursor?: string }>;
 }) {
-  const { data: instructors, nextCursor, total } = await getInstructors(searchParams.cursor);
+  const { cursor } = await searchParams;
+  const { data: instructors, nextCursor, total } = await getInstructors(cursor);
 
   return (
     <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '2rem' }}>
@@ -138,7 +139,7 @@ export default async function InstructoresPage({
           <div
             style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}
           >
-            {searchParams.cursor && (
+            {cursor && (
               <Link
                 href="/instrutores"
                 style={{

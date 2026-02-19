@@ -28,8 +28,9 @@ async function getInstructor(id: string): Promise<Instructor | null> {
   }
 }
 
-export default async function InstructorProfilePage({ params }: { params: { id: string } }) {
-  const instructor = await getInstructor(params.id);
+export default async function InstructorProfilePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const instructor = await getInstructor(id);
 
   if (!instructor) {
     notFound();
